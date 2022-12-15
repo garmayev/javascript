@@ -1,0 +1,124 @@
+html,
+body {
+  min-height: calc(100% - 1em);
+  height: calc(100% - 1em);
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin-top: -1em;
+}
+.manager {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100% - 2em - 4px);
+  margin: 1em 0.1em;
+  border: 2px solid #ccc;
+  max-height: 99vh;
+}
+.tab {
+  min-height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.4em 0;
+  display: inline-block;
+  overflow-y: auto;
+}
+.tab:first-child {
+  border-right: 2px solid #ccc;
+}
+.tab li {
+  margin: 0 0.3em;
+  padding: 0.1em;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.2em;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+.tab li.active {
+  border: 2px dashed green;
+}
+.tab li.active:hover {
+  border: 2px dashed green;
+}
+.tab li:hover {
+  border: 2px dashed gray;
+}
+.tab li::before {
+  font-family: "FontAwesome";
+  width: 25px;
+  text-align: center;
+  display: inline-block;
+  font-weight: 900;
+}
+.tab li.dir::before {
+  content: "\f07b";
+}
+.tab li.file::before {
+  content: "\f15b";
+}
+.modal {
+  display: none;
+}
+.modal.active {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 12.5%;
+  top: 2vh;
+  width: 75%;
+  height: 70vh;
+  padding: 0.2rem 0.3rem;
+  background: white;
+  z-index: 2;
+}
+.modal.active .modal-header,
+.modal.active .modal-footer {
+  height: 2rem;
+  padding: 0.2rem 0;
+  line-height: 1.6rem;
+}
+.modal.active .modal-footer {
+  margin-top: -0.5rem;
+}
+.modal.active .modal-body {
+  min-height: calc(100% - 4rem);
+}
+.modal.active .modal-body textarea {
+  height: calc(70vh - 5rem);
+  width: 99%;
+}
+.modal.active .modal-body img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 100%;
+}
+.modal.active + .shadow {
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.btn {
+  padding: 0.3rem 1.5rem;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.btn-danger {
+  background: red;
+}
+.btn.btn-success {
+  background: green;
+}
+.f-left {
+  float: left;
+}
+.f-right {
+  float: right;
+}

@@ -1,0 +1,130 @@
+html, body {
+	min-height: calc(100% - 1em);
+	height: calc(100% - 1em);
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin-top: -1em;
+}
+.manager {
+	display: flex;
+	flex-direction: row;
+	min-height: ~"calc(100% - 2em - 4px)";
+	margin: 1em .1em;
+	border: 2px solid #ccc;
+	max-height: 99vh;
+}
+
+.tab {
+	min-height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: .4em 0;
+	display: inline-block;
+	overflow-y: auto;
+
+	&:first-child {
+		border-right: 2px solid #ccc;
+	}
+
+	& li {
+		margin: 0 .3em;
+		padding: .1em;
+		cursor: pointer;
+		user-select: none;
+		font-size: 1.2em;
+		border: 2px solid white;
+		border-radius: 3px;
+
+		&.active {
+			border: 2px dashed green;
+			&:hover {
+				border: 2px dashed green;
+			}
+		}
+
+		&:hover {
+			border: 2px dashed gray;
+		}
+
+		&::before {
+			font-family: "FontAwesome";
+			width: 25px;
+			text-align: center;
+			display: inline-block;
+			font-weight: 900;
+		}
+
+		&.dir::before {
+			content: "\f07b";
+		}
+
+		&.file::before {
+			content: "\f15b";
+		}
+	}
+}
+.modal {
+	display: none;
+	&.active {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		left: 12.5%;
+		top: 2vh;
+		width: 75%;
+		height: 70vh;
+		padding: .2rem .3rem;
+		background: white;
+		z-index: 2;
+		.modal-header, .modal-footer {
+			height: 2rem;
+			padding: .2rem 0;
+			line-height: 1.6rem;
+		}
+		.modal-footer {
+			margin-top: -.5rem;
+		}
+		.modal-body {
+			min-height: calc(100% - 4rem);
+			textarea {
+				height: calc(70vh - 5rem);
+				width: 99%;
+			}
+			img {
+				width: 100%;
+				object-fit: cover;
+				max-height: 100%;
+			}
+		}
+		& + .shadow {
+			background: rgba(0, 0, 0, .2);
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+		}
+	}
+}
+.btn {
+	padding: .3rem 1.5rem;
+	border-radius: 5px;
+	color: white;
+	font-weight: 600;
+	cursor: pointer;
+	&.btn-danger {
+		background: red;
+	}
+	&.btn-success {
+		background: green;
+	}
+}
+.f-left {
+	float: left;
+}
+.f-right {
+	float: right;
+}
