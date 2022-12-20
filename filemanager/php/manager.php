@@ -47,7 +47,6 @@ class Manager
 		foreach (glob("*") as $filename) {
 			$data = finfo_file($file_info, $source);
 		}
-		$data = isset($data) ? $data : "text/plain";
 		finfo_close($file_info);
 
 		return [
@@ -62,27 +61,29 @@ class Manager
 		return (bool)file_put_contents($filename, $content, FILE_USE_INCLUDE_PATH);
 	}
 
-	public function __construct($args)
+	public function __construct($args = null)
 	{
-		switch ($args['action']) {
-			case "list":
-				$source = $_SERVER["DOCUMENT_ROOT"] . $args['source'] . "/";
-				echo json_encode(["ok" => true, 'dir' => self::_list($source)]);
-				break;
-			case "copy":
-				$source = $_SERVER["DOCUMENT_ROOT"] . $args['source'];
-				$target = $_SERVER["DOCUMENT_ROOT"] . $args['target'];
-				echo json_encode(["ok" => true, 'dir' => self::_copy($source, $target)]);
-				break;
-			case "open":
-				$source = $_SERVER["DOCUMENT_ROOT"] . $args['source'];
-				echo json_encode(["ok" => true, 'content' => self::_open($source)]);
-				break;
-			case "save":
-				$data = $args['content'];
-				echo json_encode(["ok" => true, 'save' => self::_save($args['filename'], $data)]);
-				break;
-		}
+        if ( isset($args['action']) ) {
+            switch ($args['action']) {
+                case "list":
+                    $source = $_SERVER["DOCUMENT_ROOT"] . $args['source'] . "/";
+                    echo json_encode(["ok" => true, 'dir' => self::_list($source)]);
+                    break;
+                case "copy":
+                    $source = $_SERVER["DOCUMENT_ROOT"] . $args['source'];
+                    $target = $_SERVER["DOCUMENT_ROOT"] . $args['target'];
+                    echo json_encode(["ok" => true, 'dir' => self::_copy($source, $target)]);
+                    break;
+                case "open":
+                    $source = $_SERVER["DOCUMENT_ROOT"] . $args['source'];
+                    echo json_encode(["ok" => true, 'content' => self::_open($source)]);
+                    break;
+                case "save":
+                    $data = $args['content'];
+                    echo json_encode(["ok" => true, 'save' => self::_save($args['filename'], $data)]);
+                    break;
+            }
+        }
 	}
 }
 

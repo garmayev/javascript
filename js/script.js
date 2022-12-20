@@ -14,5 +14,4 @@ $(() => {
         }
         wrapper.addClass(target.attr('data-theme'))
     })
-
 })

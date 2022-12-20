@@ -1,28 +1,21 @@
+<?php
+require "php/manager.php";
+$manager = new Manager();
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>File Manager</title>
-        <script src="js/manager.js"></script>
-        <script src="//kit.fontawesome.com/aa23fe1476.js" crossorigin="anonymous"></script>
-        <link rel="icon" type="image/png" href="favicon.png"/>
-        <link rel="stylesheet" href="css/index.css">
-    </head>
-    <body>
-        <div class="manager"></div>
-        <div class="modal">
-            <div class="modal-header"></div>
-            <div class="modal-body"></div>
-            <div class="modal-footer">
-                <span class="btn btn-danger f-left cancel">Cancel</span>
-                <span class="btn btn-success f-right save">Save</span>
-            </div>
-        </div>
-        <div class="shadow"></div>
-    </body>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let manager = new Manager('.manager', '<?= $_SERVER["DOCUMENT_ROOT"] ?>');
-        })
-    </script>
+<head>
+    <meta charset="UTF-8">
+    <title>File Manager</title>
+    <script crossorigin src="//unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="//unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="//unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script crossorigin src="//kit.fontawesome.com/aa23fe1476.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="manager"></div>
+<script src="js/index.js" type="module"></script>
+</body>
 </html>
